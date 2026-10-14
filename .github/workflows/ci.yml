@@ -56,8 +56,6 @@ jobs:
         if: runner.os == 'Linux'
         run: for f in crates/haul-web/ui/*.js; do node --check "$f"; done
       - name: Clippy
-        env:
-          CARGO_LOG: cargo::core::compiler::fingerprint=info
-        run: mbx clippy --locked --workspace --all-targets
+        run: mbx clippy -v --locked --workspace --all-targets
       - name: Test
         run: mbx test --locked --workspace
